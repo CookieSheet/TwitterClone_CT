@@ -1,7 +1,22 @@
 const express = require('express');
+const dotenv = require('dotenv');
 const path = require('path');
 const app = express();
-const port = 3000
+const port = 3000;
+const { connectDB } = require('./src/db');
+const { graphqlHTTP } = require('express-graphql');
+const schema = require('./src/graphql/schema');
+
+dotenv.config()
+
+// Connecting Database
+connectDB()
+
+app.use("/graphql", graphqlHTTP({
+    schema,
+    graphiql: true
+}))
+
 
 app.listen(port, ()=>{
     console.log(`hello World app listening at port:${port}`)
