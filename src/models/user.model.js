@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema(
     {
@@ -17,11 +17,11 @@ const userSchema = new mongoose.Schema(
             unique: true,
             match: [
                 /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-                "Please enter a valid email",
+                "Please enter a valid email"
             ],
-        },
+        }
     },
-    { timestamps: true }
+    {timestamps: true}
 )
 
 module.exports = mongoose.model("user", userSchema)

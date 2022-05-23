@@ -1,0 +1,25 @@
+<%- include('../partials/header.ejs') %>
+<main class="container">
+    <form method="POST" action="/post/create">
+    <div>
+        <textarea type="text" class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Flock on over and chirp with us!" name="text"></textarea>
+        <button type="submit" class="btn btn-primary" href="/post/create" id="submitbtn">Create Post</button>
+    </div>
+    </form>
+    <div>
+        <h2>Posts</h2>
+        <hr>
+        <% posts.reverse().forEach(post => { %>
+         
+            <div class="card" style="width: 70rem;">
+                <div class="card-body">
+                    <a><%= post.user.username %></a>
+                    <p class="card-text"><%= post.text %> </p>
+                    <p><%= post.createdDate %></p>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</main>
+
+<%- include('../partials/footer.ejs') %> 
